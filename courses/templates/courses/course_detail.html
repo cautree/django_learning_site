@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}  {{course.title}} {% endblock %}
+
+
+{% block content %}
+
+<h2>  {{course.description}} </h2>
+
+       {%  for step in course.step_set.all %}
+       <h3>   {{step.description}}</h3>
+       {% endfor %}
+
+{% endblock %}
