@@ -5,7 +5,11 @@
 
 <h1> Welcome!<h1>
 	<div  class="row">
-		{{form.as_p}}
+		<form action="" method="POST">  
+		  {{form.as_p}}
+		  {% csrf_token %}
+		  <input type="submit" class="button">
+		</form>
 
 	</div>
 
