@@ -10,4 +10,4 @@ def newest_course():
 	return Course.objects.latest('created_at')
 
 #register.simple_tag('newest_course')  
-#changed to the decoration above
+#changed to the decorator above
