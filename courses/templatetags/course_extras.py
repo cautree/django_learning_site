@@ -1,9 +1,9 @@
 from django import template
 from courses.models import Course
+from django.utils.safestring import mark_safe
 import markdown2
 
 register = template.Library()
-
 
 @register.simple_tag
 def newest_course():
@@ -18,7 +18,7 @@ def nav_courses_list():
 	'''Return dictionary of course to display as navigation pane'''
 	courses = Course.objects.all()
 	return {'courses':courses}
-register.inclusion_tag('courses/course_nav.html')(nav_courses_list)
+#register.inclusion_tag('courses/course_nav.html')(nav_courses_list)
 
 
 @register.filter('time_estimate')
@@ -30,4 +30,4 @@ def time_estimate(word_count):
 @register.filter('markdown_to_html')
 def markdown_to_html(markdown_text):
 	html_body = markdown2.markdown(markdown_text)
-	return html_body
+	return mark_safe(html_body)
