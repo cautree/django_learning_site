@@ -12,6 +12,8 @@
 
 <article>
 
-{{ step.content|linebreaks}}
+{% with con=step.content %}
+{{ con|linebreaks}} Content: {{con|wordcount}} words.
+{% endwith %}
 
 {%  endblock   %}

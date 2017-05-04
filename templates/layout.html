@@ -1,11 +1,13 @@
 {% load static from staticfiles %}
+<!-- {% load course_extras %} -->
 <!doctype html>
 
 <html>
      <head>
          <title>  {% block title%}  {% endblock %} </title>
          <link rel="stylesheet" href="{% static 'css/layout.css' %}">
-
+         {% block static %}  {% endblock %}
+ 
      </head>
 
       <body>   
@@ -15,9 +17,9 @@
       	<nav>
       		<a href="{% url 'views.hello_world' %}"> Home </a>
       		<a  href= "{% url 'courses:list' %} "> Courses</a>
-
-
       	</nav>
+
+        <!-- <p> Don't miss our latest course, {% newest_course %}!</p> -->
 
       	{%  block content %}
 

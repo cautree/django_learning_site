@@ -8,11 +8,12 @@ from .models import Step
 
 def course_list(request):
 	courses = Course.objects.all()
-	return render(request, 'courses/course_list.html', {'courses':courses})
+	email ="question@learning_site.com"
+	return render(request, 'courses/course_list.html', {'courses':courses,
+		                                              'email': email})
 	
 
-def course_detail(request,pk):
-	#course = Course.objects.get(pk=pk)
+def course_detail(request,pk):	
 	course = get_object_or_404(Course,pk=pk)
 	return render(request, 'courses/course_detail.html',{'course':course})
 
