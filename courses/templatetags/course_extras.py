@@ -11,3 +11,10 @@ def newest_course():
 
 #register.simple_tag('newest_course')  
 #changed to the decorator above
+
+@register.inclusion_tag('courses/course_nav.html')
+def nav_courses_list():
+	'''Return dictionary of course to display as navigation pane'''
+	courses = Course.objects.all()
+	return {'courses':courses}
+register.inclusion_tag('courses/course_nav.html')(nav_courses_list)
