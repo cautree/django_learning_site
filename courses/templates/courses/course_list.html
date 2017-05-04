@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
 {%  load static from staticfiles %}
+{%  load course_extras %}
 
 {% block static %}  <link rel="stylesheet" href="{% static 'courses/css/courses.css' %}">  {% endblock %}
 
@@ -15,7 +16,7 @@
 
       <div class="card-copy">
       	{%  if course.description %}
-             {{course.description|truncatewords:5}}
+             {{course.description|markdown_to_html|safe|truncatewords:5}}
              <a href="{%url 'courses:detail' pk=course.pk %}"> Read more</a>
          {%  endif %}
 

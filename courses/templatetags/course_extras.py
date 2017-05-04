@@ -1,5 +1,6 @@
 from django import template
 from courses.models import Course
+import markdown2
 
 register = template.Library()
 
@@ -18,3 +19,15 @@ def nav_courses_list():
 	courses = Course.objects.all()
 	return {'courses':courses}
 register.inclusion_tag('courses/course_nav.html')(nav_courses_list)
+
+
+@register.filter('time_estimate')
+def time_estimate(word_count):
+	''' Estimate the number of minutes needed to take based on the word count'''
+	minutes = round(word_count/20)
+	return minutes
+
+@register.filter('markdown_to_html')
+def markdown_to_html(markdown_text):
+	html_body = markdown2.markdown(markdown_text)
+	return html_body
